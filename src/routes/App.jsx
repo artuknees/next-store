@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter , Routes , Route } from 'react-router-dom';
 import Layout from '../containers/Layout';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
@@ -11,27 +11,32 @@ import CreateAccount from '../pages/CreateAccount';
 import Checkout from '../pages/Checkout';
 import Orders from '../pages/Orders';
 import NotFound from '../pages/NotFound';
-import '../styles/global.css';
+import '@styles/global.css'; // importo los estilos
+import AppContext from '../context/AppContext.js';
+import useInitialState from '../hooks/useInitialState';
 
 const App = () => {
-	return (
-		<BrowserRouter>
-			<Layout>
-				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route exact path="/login" component={Login} />
-					<Route exact path="/password-recovery" component={PasswordRecovery} />
-					<Route exact path="/send-email" component={SendEmail} />
-					<Route exact path="/new-password" component={NewPassword} />
-					<Route exact path="/account" component={MyAccount} />
-					<Route exact path="/signup" component={CreateAccount} />
-					<Route exact path="/checkout" component={Checkout} />
-					<Route exact path="/orders" component={Orders} />
-					<Route path="*" component={NotFound} />
-				</Switch>
-			</Layout>
-		</BrowserRouter>
-	);
+    const initialState = useInitialState();
+    return (
+    <AppContext.Provider value={initialState} >
+        <HashRouter>
+            <Layout>
+                <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/PasswordRecovery" element={<PasswordRecovery />} />
+                    <Route exact path="/SendEmail" element={<SendEmail/>} />
+                    <Route exact path="/NewPassword" element={<NewPassword/>} />
+                    <Route exact path="/MyAccount" element={<MyAccount/>} />
+                    <Route exact path="/CreateAccount" element={<CreateAccount/>} />
+                    <Route exact path="/Checkout" element={<Checkout/>} />
+                    <Route exact path="/Orders" element={<Orders/>} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </Layout>
+        </HashRouter>
+    </AppContext.Provider>
+    );
 }
 
 export default App;

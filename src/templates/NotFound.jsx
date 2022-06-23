@@ -1,11 +1,11 @@
 import React from 'react';
 
 const NotFound = () => {
-	return (
-		<div>
-			No encontrado, error 404.
-		</div>
-	);
+    return (
+        <div>
+            Oops, not Found - Error 404
+        </div>
+    )
 }
 
 export default NotFound;
