@@ -6,6 +6,7 @@ import logo from '@logos/logo_yard_sale.svg';
 import shoppingCart from '@icons/icon_shopping_cart.svg';
 import AppContext from '@context/AppContext';
 import MyOrder from '@containers/MyOrder';
+import styles from '@styles/Header.module.scss';
 
 const Header = () => {
 	const [toggle , setToggle] = useState(false); // decido inicializar falso
@@ -16,7 +17,7 @@ const Header = () => {
 		setToggle(!toggle); // cambio el valor sin decir true o false
 	};
 	return (
-		<nav>
+		<nav className={styles.Nav}>
 			<img src={menu} alt="menu" className="menu" />
 			<div className="navbar-left">
 				<img src={logo} alt="logo" className="nav-logo" />
