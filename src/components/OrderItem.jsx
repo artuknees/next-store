@@ -1,7 +1,8 @@
 import React , { useContext } from 'react';
-import AppContext from '../context/AppContext';
-import '../styles/OrderItem.scss';
+import AppContext from '@context/AppContext';
+// import '../styles/OrderItem.scss';
 import iconClose from '@icons/icon_close.png';
+import styles from '@styles/OrderItem.module.scss';
 
 const OrderItem = (props) => {
 	// solucion para evitar multi borrad
@@ -21,7 +22,7 @@ const OrderItem = (props) => {
 	//
 
 	return (
-		<div className="OrderItem">
+		<div className={styles.OrderItem}>
 			<figure>
 				<img src={product.images[0]} alt={product.title} />
 			</figure>
